@@ -62,7 +62,7 @@ rop += [prsi, 0]
 rop += [prdx, 2]
 rop += [c_open]
 
-## read(3, flag, 10)
+# read(3, flag, 50)
 rop += [prdi, 3]
 rop += [prsi, flag]
 rop += [prdx, 50]
